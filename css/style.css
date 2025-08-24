@@ -9988,3 +9988,142 @@ h6,
   padding: 0;
   list-style-type: none;
 }
+
+/* Bubble Cloud Styles */
+.section-watermark{
+  position:absolute; inset:0; top:-30px; 
+  font-size:140px; font-weight:800; letter-spacing:10px;
+  color:#000; opacity:.05; pointer-events:none; user-select:none;
+}
+#skills-bubble-root{ min-height:320px; }
+#skills{ min-height:360px; }
+.skills-bubbles svg{ width:100%; height:520px; }
+.bubble{
+  cursor:grab; 
+  transition:transform .08s ease;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.15));
+}
+.bubble:active{ cursor:grabbing; }
+.bubble text{
+  font: 600 14px/1.2 "Roboto",system-ui,sans-serif;
+  text-anchor: middle; dominant-baseline: middle; fill:#fff;
+  pointer-events:none;
+}
+.bubble .ring{ fill:none; stroke:#ffffff33; stroke-width:2px; }
+.bubble.is-focus circle { outline: none; stroke:#ffffff; stroke-width:3px; }
+.bubble.is-focus .ring { stroke:#ffffff66; }
+.skills-tooltip{
+  position:fixed; z-index:50; pointer-events:none;
+  padding:6px 10px; border-radius:10px; background:#111; color:#fff; font:500 12px/1 "Inter",sans-serif; 
+  box-shadow:0 4px 18px rgba(0,0,0,.25); opacity:0; transform:translateY(-6px);
+  transition:opacity .12s ease, transform .12s ease;
+}
+@media (max-width: 576px){
+  .skills-bubbles svg{ height: 440px; }
+  .bubble text{ font-size:12px; }
+}
+
+.skills-bubbles svg{ width:100%; height:480px; }
+.bubble{ cursor:grab; }
+.bubble:active{ cursor:grabbing; }
+.bubble text{ font:600 14px/1.2 "Roboto",sans-serif; pointer-events:none; }
+
+/* shared section title styling */
+.section .title { color:#503B57; font-weight:800; }
+
+/* outlined watermark to match ABOUT */
+.section-watermark{
+  position:absolute; inset:0; top:-24px;
+  font-weight:900; letter-spacing:0.12em;
+  font-size: clamp(120px, 18vw, 240px);
+  line-height:1; text-transform:uppercase;
+  color: transparent;                   /* no fill */
+  -webkit-text-stroke: 2px #E5E7EB;    /* outline like ABOUT */
+  text-stroke: 2px #E5E7EB;
+  opacity:.6; pointer-events:none; user-select:none;
+}
+
+/* keep bubbles below the header */
+#skills-bubble-root{ position:relative; z-index:2; margin-top: 12px; }
+
+/* consistent vertical rhythm with other sections */
+.section.block { padding-top: 4rem; padding-bottom: 4rem; }
+@media (min-width:992px){ .section.block { padding-top: 5rem; padding-bottom: 5rem; } }
+
+/* Mobile optimizations for Skills section */
+@media (max-width: 767px) {
+  #skills {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  #skills .display-1 {
+    font-size: 4rem !important;
+    -webkit-text-stroke: 1px #dee2e6 !important;
+  }
+  
+  #skills .position-absolute {
+    font-size: 1.5rem !important;
+  }
+  
+  #skills-bubble-root {
+    margin-top: 8px;
+    min-height: 280px;
+  }
+  
+  #skills-bubble-root svg {
+    height: 400px !important;
+  }
+  
+  .bubble {
+    cursor: grab;
+  }
+  
+  .bubble:active {
+    cursor: grabbing;
+  }
+  
+  .bubble text {
+    font-size: 10px !important;
+    font-weight: 600;
+  }
+  
+  /* Improve touch targets */
+  .bubble circle {
+    stroke-width: 2px;
+  }
+  
+  .bubble.is-focus circle {
+    stroke-width: 3px;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 991px) {
+  #skills-bubble-root svg {
+    height: 450px !important;
+  }
+  
+  .bubble text {
+    font-size: 12px !important;
+  }
+}
+
+/* Prevent text selection on mobile for better UX */
+.bubble {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth transitions for mobile interactions */
+.bubble {
+  transition: transform 0.1s ease-out;
+}
+
+.bubble:active {
+  transform: scale(1.05);
+}
